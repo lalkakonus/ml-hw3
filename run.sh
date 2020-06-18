@@ -13,17 +13,17 @@ do
 done
 
 if [ "$answer" == "y" ]; then
-	echo "Loading combined data from Google Drive..."
+	echo "Loading data from Google Drive..."
 
 	FILEID="1_wi0JFIQADsjhjtbIoYnNUkAqhi_BypW"
 	FILENAME=$DIR"/data.tar.gz"
 	wget --load-cookies /tmp/cookies.txt "https://docs.google.com/uc?export=download&confirm=$(wget --quiet --save-cookies /tmp/cookies.txt --keep-session-cookies --no-check-certificate 'https://docs.google.com/uc?export=download&id='$FILEID -O- |
 	sed -rn 's/.*confirm=([0-9A-Za-z_]+).*/\1\n/p')&id="$FILEID -O $FILENAME &&
 	rm -rf /tmp/cookies.txt
-	echo "Loading combined data from Google Drive...OK"
+	echo "Loading data from Google Drive...OK"
 
 	echo "Unpacking data archive..."
-	tar -zxvf $FILENAME --directory $DIR
+	tar -zxvf $FILENAME
 	echo "Unpacking data archive...OK"
 
 	echo "Remove archive file..."
@@ -38,6 +38,5 @@ elif [ "$answer" != "n" ]; then
 fi
 
 # Run python ranking code
-echo "Run python ranking code..."
-SRC_DIR="src/python"
+echo "Run python code..."
 python3 "src/main.py"
