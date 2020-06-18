@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Data download
-DIR="data/"
+DIR="data"
 mkdir -p $DIR
 
 for (( i = 0; i < 3; i++ ))
